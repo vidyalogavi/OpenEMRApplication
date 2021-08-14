@@ -33,8 +33,7 @@ public class WebDriverWrapper
 			System.setProperty("webdriver.ie.driver", "");
 			driver = new InternetExplorerDriver();
 		}
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
-		driver = new ChromeDriver();
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://demo.openemr.io/b/openemr/");

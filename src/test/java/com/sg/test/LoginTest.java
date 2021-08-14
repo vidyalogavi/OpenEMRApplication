@@ -1,49 +1,47 @@
 package com.sg.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.sg.base.WebDriverWrapper;
+import com.sg.pages.DashboardPages;
+import com.sg.pages.LoginPage;
+import com.sg.utilities.DataProviderUtils;
+import com.sg.utilities.ExcelUtils;
 
 public class LoginTest extends WebDriverWrapper
 {
-
-	
-	
-	@Test
-	public void validCredentialTest()
+		
+	@Test(dataProvider="validCredentialData" , dataProviderClass= DataProviderUtils.class)
+	public void validCredentialTest(String username,String password, String language, String expTitle)
 	{
-		driver.findElement(By.id("authUser")).sendKeys("admin");
-		driver.findElement(By.id("clearPass")).sendKeys("pass");
+		LoginPage login = new LoginPage(driver);
 		
-		Select s = new Select(driver.findElement(By.name("languageChoice")));
-		s.selectByVisibleText("English (Indian)");
+		login.enterUsername(username);
+		login.enterPassword(password);
 		
-		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+		login.selectLanguage(language);
 		
-		WebDriverWait wait = new WebDriverWait(driver,50);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[text()='Flow Board']")));
-		String actString =driver.getTitle();
-		System.out.println(actString);
-		Assert.assertEquals(actString, "OpenEMR");
+		login.clickLogin();
+		
+		DashboardPages dashboard = new DashboardPages(driver);
+		dashboard.waitForPresenceOfFlowBoard();
+		
+		Assert.assertEquals(dashboard.getPageTitle(), expTitle);
 	}
 	
-	@Test
-	public void invalidCredentialTest()
+	@Test(dataProvider="invalidCredentialData" , dataProviderClass= DataProviderUtils.class)
+	public void invalidCredentialTest(String username,String password, String language, String expError)
 	{
-		driver.findElement(By.id("authUser")).sendKeys("admin1");
-		driver.findElement(By.id("clearPass")).sendKeys("pass");
+		LoginPage login = new LoginPage(driver);
+		login.enterUsername(username);
+		login.enterPassword(password);
 		
-		Select s = new Select(driver.findElement(By.name("languageChoice")));
-		s.selectByVisibleText("English (Indian)");
+		login.selectLanguage(language);
 		
-		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
-		String actMSG=driver.findElement(By.xpath("//div[contains(text(),'Invalid')]")).getText();
-		Assert.assertEquals(actMSG,"Invalid username or password");
+		login.clickLogin();
+		Assert.assertEquals(login.getInvalidLoginMessage(),expError);
 
 	}
 

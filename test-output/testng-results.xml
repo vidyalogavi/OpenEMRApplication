@@ -1,25 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-08-14T09:37:13 IST" name="Default suite" finished-at="2021-08-14T09:38:17 IST" duration-ms="64458">
+  <suite started-at="2021-08-14T16:35:55 IST" name="Default suite" finished-at="2021-08-14T16:36:49 IST" duration-ms="54224">
     <groups>
     </groups>
-    <test started-at="2021-08-14T09:37:13 IST" name="Default test" finished-at="2021-08-14T09:38:17 IST" duration-ms="64458">
-      <class name="com.sg.test.PatientTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.PatientTest@306f16f3]" started-at="2021-08-14T09:37:13 IST" name="setup" finished-at="2021-08-14T09:37:40 IST" duration-ms="26684" status="PASS">
+    <test started-at="2021-08-14T16:35:55 IST" name="Default test" finished-at="2021-08-14T16:36:49 IST" duration-ms="54224">
+      <class name="com.sg.test.LoginTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:35:55 IST" name="setup" finished-at="2021-08-14T16:36:00 IST" duration-ms="5029" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="addPatient()[pri:0, instance:com.sg.test.PatientTest@306f16f3]" started-at="2021-08-14T09:37:40 IST" name="addPatient" finished-at="2021-08-14T09:38:17 IST" duration-ms="37514" status="PASS">
+        <test-method signature="invalidCredentialTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:00 IST" name="invalidCredentialTest" data-provider="invalidCredentialData" finished-at="2021-08-14T16:36:02 IST" duration-ms="1599" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin123]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[pass]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[English (Indian)]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Invalid username or password]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addPatient -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.PatientTest@306f16f3]" started-at="2021-08-14T09:38:17 IST" name="tearDown" finished-at="2021-08-14T09:38:17 IST" duration-ms="224" status="PASS">
+        </test-method> <!-- invalidCredentialTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:02 IST" name="tearDown" finished-at="2021-08-14T16:36:02 IST" duration-ms="170" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.sg.test.PatientTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:02 IST" name="setup" finished-at="2021-08-14T16:36:07 IST" duration-ms="4872" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidCredentialTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:07 IST" name="invalidCredentialTest" data-provider="invalidCredentialData" finished-at="2021-08-14T16:36:08 IST" duration-ms="1582" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[john]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[john123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[English (Indian)]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Invalid username or password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidCredentialTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:08 IST" name="tearDown" finished-at="2021-08-14T16:36:09 IST" duration-ms="229" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:09 IST" name="setup" finished-at="2021-08-14T16:36:13 IST" duration-ms="4747" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="validCredentialTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:13 IST" name="validCredentialTest" data-provider="validCredentialData" finished-at="2021-08-14T16:36:18 IST" duration-ms="4583" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[pass]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[English (Indian)]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[OpenEMR]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validCredentialTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:18 IST" name="tearDown" finished-at="2021-08-14T16:36:18 IST" duration-ms="142" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:18 IST" name="setup" finished-at="2021-08-14T16:36:23 IST" duration-ms="4582" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="validCredentialTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:23 IST" name="validCredentialTest" data-provider="validCredentialData" finished-at="2021-08-14T16:36:38 IST" duration-ms="14908" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[physician]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[physician]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[English (Indian)]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[OpenEMR]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validCredentialTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:38 IST" name="tearDown" finished-at="2021-08-14T16:36:38 IST" duration-ms="123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:38 IST" name="setup" finished-at="2021-08-14T16:36:44 IST" duration-ms="5734" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="validCredentialTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:44 IST" name="validCredentialTest" data-provider="validCredentialData" finished-at="2021-08-14T16:36:49 IST" duration-ms="5234" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[accountant]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[accountant]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[English (Indian)]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[OpenEMR]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validCredentialTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.sg.test.LoginTest@4fb3ee4e]" started-at="2021-08-14T16:36:49 IST" name="tearDown" finished-at="2021-08-14T16:36:49 IST" duration-ms="147" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.sg.test.LoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

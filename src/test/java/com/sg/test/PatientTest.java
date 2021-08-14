@@ -8,19 +8,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import com.sg.base.WebDriverWrapper;
+import com.sg.pages.LoginPage;
 
 public class PatientTest extends WebDriverWrapper
 {
 	@Test
 	public void addPatient() throws InterruptedException
 	{
-		driver.findElement(By.id("authUser")).sendKeys("admin");
-		driver.findElement(By.id("clearPass")).sendKeys("pass");
+		LoginPage login = new LoginPage(driver);
+		login.enterUsername("admin");
+		login.enterPassword("pass");
 		
-		Select s = new Select(driver.findElement(By.name("languageChoice")));
-		s.selectByVisibleText("English (Indian)");
+		login.selectLanguage("English (Indian)");
 		
-		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+		login.clickLogin();
 		
 		Actions a = new Actions(driver);
 		a.moveToElement(driver.findElement(By.xpath("//div[text()='Patient/Client']"))).perform();
