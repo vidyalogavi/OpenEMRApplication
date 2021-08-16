@@ -14,6 +14,8 @@ public class DashboardPages
 	}
 	
 	private By flowBoardLocator = By.xpath("//div[text()='Flow Board']");
+	private By AboutLocator = By.xpath("//div[text()='About']");
+	private String mscframeName="msc";
 	
 	public void waitForPresenceOfFlowBoard()
 	{
@@ -25,5 +27,21 @@ public class DashboardPages
 	{
 		return driver.getTitle();
 	}
+	
+	public void clickAbout()
+	{
+		driver.findElement(AboutLocator).click();
+	}
+	
+	public void switchToMSCFrame()
+	{
+		driver.switchTo().frame(mscframeName);
+	}
+	
+	public void switchToDefaultFrame()
+	{
+		driver.switchTo().defaultContent();
+	}
+	
 
 }

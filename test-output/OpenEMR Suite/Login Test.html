@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>TestNG:  Default test</title>
+<title>TestNG:  Login Test</title>
 <link href="../testng.css" rel="stylesheet" type="text/css" />
 <link href="../my-testng.css" rel="stylesheet" type="text/css" />
 
@@ -53,13 +53,13 @@ function toggleAllBoxes() {
 
 </head>
 <body>
-<h2 align='center'>Default test</h2><table border='1' align="center">
+<h2 align='center'>Login Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Aug 16 11:37:27 IST 2021</td>
+<td>Started on:</td><td>Sat Aug 14 17:19:40 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>25 seconds (25977 ms)</td>
+<tr><td>Total time:</td><td>72 seconds (72956 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,15 +75,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.sg.test.AboutTest.checkAboutHeaderAndVersionTest()'><b>checkAboutHeaderAndVersionTest</b><br>Test class: com.sg.test.AboutTest<br>Parameters: admin, pass, English (Indian), About OpenEMR, v6.0.0</td>
+<td title='com.sg.test.LoginTest.validCredentialTest()'><b>validCredentialTest</b><br>Test class: com.sg.test.LoginTest<br>Parameters: physician, physician, English (Indian), OpenEMR</td>
 <td></td>
 <td>5</td>
-<td>com.sg.test.AboutTest@741a8937</td></tr>
+<td>com.sg.test.LoginTest@5ba3f27a</td></tr>
 <tr>
-<td title='com.sg.test.AboutTest.checkAboutHeaderAndVersionTest()'><b>checkAboutHeaderAndVersionTest</b><br>Test class: com.sg.test.AboutTest<br>Parameters: accountant, accountant, English (Indian), About OpenEMR, v6.0.0</td>
+<td title='com.sg.test.LoginTest.validCredentialTest()'><b>validCredentialTest</b><br>Test class: com.sg.test.LoginTest<br>Parameters: accountant, accountant, English (Indian), OpenEMR</td>
 <td></td>
-<td>8</td>
-<td>com.sg.test.AboutTest@741a8937</td></tr>
+<td>4</td>
+<td>com.sg.test.LoginTest@5ba3f27a</td></tr>
+<tr>
+<td title='com.sg.test.LoginTest.invalidCredentialTest()'><b>invalidCredentialTest</b><br>Test class: com.sg.test.LoginTest<br>Parameters: john, john123, English (Indian), Invalid username or password</td>
+<td></td>
+<td>1</td>
+<td>com.sg.test.LoginTest@5ba3f27a</td></tr>
+<tr>
+<td title='com.sg.test.LoginTest.validCredentialTest()'><b>validCredentialTest</b><br>Test class: com.sg.test.LoginTest<br>Parameters: admin, pass, English (Indian), OpenEMR</td>
+<td></td>
+<td>4</td>
+<td>com.sg.test.LoginTest@5ba3f27a</td></tr>
+<tr>
+<td title='com.sg.test.LoginTest.invalidCredentialTest()'><b>invalidCredentialTest</b><br>Test class: com.sg.test.LoginTest<br>Parameters: admin123, pass, English (Indian), Invalid username or password</td>
+<td></td>
+<td>2</td>
+<td>com.sg.test.LoginTest@5ba3f27a</td></tr>
 </table><p>
 </body>
 </html>

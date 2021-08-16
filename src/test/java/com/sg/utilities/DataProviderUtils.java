@@ -1,10 +1,17 @@
 package com.sg.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import org.testng.annotations.DataProvider;
 
 public class DataProviderUtils {
+	
+	@DataProvider
+	public Object[][] commonDataProvider(Method method) throws IOException
+	{
+		return ExcelUtils.getSheetToObjectArray("src/test/resources/testdata/openemrdata.xlsx", method.getName());
+	}
 	
 	@DataProvider
 	public Object[][] validCredentialData()

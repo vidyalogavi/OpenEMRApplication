@@ -8,6 +8,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
 
 public class WebDriverWrapper 
 {
@@ -15,9 +18,10 @@ public class WebDriverWrapper
 	protected WebDriver driver;
 	
 	@BeforeMethod
-	public void setup()
+	@Parameters({"browser"})
+	public void setup(@Optional("ch") String browser)
 	{
-		String browser="ch";
+		
 		if(browser.equals("ch"))
 		{
 			System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
