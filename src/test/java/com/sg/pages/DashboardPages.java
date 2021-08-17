@@ -2,6 +2,7 @@ package com.sg.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,6 +17,10 @@ public class DashboardPages
 	private By flowBoardLocator = By.xpath("//div[text()='Flow Board']");
 	private By AboutLocator = By.xpath("//div[text()='About']");
 	private String mscframeName="msc";
+	private By patientClientLocator = By.xpath("//div[text()='Patient/Client']");
+	private By patientsLocator=By.xpath("//div[text()='Patients']");
+	private By patientNameLocator = By.xpath("//a[@class='ptName']");
+	
 	
 	public void waitForPresenceOfFlowBoard()
 	{
@@ -43,5 +48,21 @@ public class DashboardPages
 		driver.switchTo().defaultContent();
 	}
 	
+	public void mousehoverPatientClient()
+	{
+		Actions a = new Actions(driver);
+		a.moveToElement(driver.findElement(patientClientLocator)).perform();
+	}
+	
+	public void selectPatients()
+	{
+		driver.findElement(patientsLocator).click();
+	}
+	
+	public String getPatientName()
+	{
+		return driver.findElement(patientNameLocator).getText();
+	}
+
 
 }

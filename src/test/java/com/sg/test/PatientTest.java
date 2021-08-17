@@ -1,68 +1,78 @@
 package com.sg.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.sg.base.WebDriverWrapper;
+import com.sg.pages.DashboardPages;
 import com.sg.pages.LoginPage;
+import com.sg.pages.PatientFinderPage;
+import com.sg.pages.SearchOrAddPatientPage;
+import com.sg.utilities.DataProviderUtils;
+
 
 public class PatientTest extends WebDriverWrapper
 {
-	@Test
-	public void addPatient() throws InterruptedException
+	@Test(dataProvider="commonDataProvider" , dataProviderClass= DataProviderUtils.class)
+	public void addPatientTest(String username,String password,String language,String nameprefix,String pfname, String plname, String dob, String gender) throws InterruptedException
 	{
 		LoginPage login = new LoginPage(driver);
-		login.enterUsername("admin");
-		login.enterPassword("pass");
 		
-		login.selectLanguage("English (Indian)");
-		
+		login.enterUsername(username);
+		test.log(Status.INFO, "Entered username as "+username);
+		login.enterPassword(password);
+		test.log(Status.INFO, "Entered passowrd as "+password);
+		login.selectLanguage(language);
+		test.log(Status.INFO, "Selected language as "+language);
 		login.clickLogin();
+		test.log(Status.INFO, "Clicked on Login");
 		
-		Actions a = new Actions(driver);
-		a.moveToElement(driver.findElement(By.xpath("//div[text()='Patient/Client']"))).perform();
-		driver.findElement(By.xpath("//div[text()='Patients']")).click();
+		DashboardPages dashboard = new DashboardPages(driver);
 		
-		driver.switchTo().frame("fin");
+		dashboard.mousehoverPatientClient();
+		test.log(Status.INFO, "Cursor Moved on Patient/Client");
+		dashboard.selectPatients();	
+		test.log(Status.INFO, "Selected Patients");
 		
-		driver.findElement(By.id("create_patient_btn1")).click();
-		driver.switchTo().defaultContent();
+		PatientFinderPage patientfind = new PatientFinderPage(driver);
+		patientfind.switchToFinFrame();	
+		test.log(Status.INFO, "Switched to Fin Frame");
+		patientfind.clickAddNewPatient();
+		test.log(Status.INFO, "Clicked on Add New Patient");
+		patientfind.switchToDefaultFrame();
+		test.log(Status.INFO, "Switched back to default content");
 		
-		driver.switchTo().frame("pat");
+		SearchOrAddPatientPage searchoraddpatient = new SearchOrAddPatientPage(driver);
+		searchoraddpatient.switchToPATFrame();
+		test.log(Status.INFO, "Switched to PAT Frame");
+		searchoraddpatient.selectNamePrefix(nameprefix);
+		test.log(Status.INFO, "Selected Name prefix as: "+ nameprefix);
+		searchoraddpatient.setFirstName(pfname);
+		test.log(Status.INFO, "Selected First Name as: "+ pfname);
+		searchoraddpatient.setLastName(plname);
+		test.log(Status.INFO, "Selected Last Name as: "+ plname);
+		searchoraddpatient.selectDOB(dob);
+		test.log(Status.INFO, "Selected Date of Birth as: "+ dob);
+		searchoraddpatient.selectGender(gender);
+		test.log(Status.INFO, "Selected Gender as: "+ gender);
+		searchoraddpatient.clickCreateNewPatient();
+		test.log(Status.INFO, "Clicked on Create New Patient");
+		searchoraddpatient.switchToDefaultFrame();
+		test.log(Status.INFO, "Switched back to default content");
+		searchoraddpatient.switchToModalFrame();
+		test.log(Status.INFO, "Switched to Modal Frame");
+		searchoraddpatient.clickConfirmCreateNewPatient();
+		test.log(Status.INFO, "Clicked on Confirm Create New Patient");
+		searchoraddpatient.waitForAlert();
+		test.log(Status.INFO, "Waited for Alert");
+		searchoraddpatient.acceptAlert();
+		test.log(Status.INFO, "Accepted Alert");
+		searchoraddpatient.switchToDefaultFrame();
+		test.log(Status.INFO, "Switched back to default content");
+
+		Assert.assertTrue(dashboard.getPatientName().contains(pfname));
 		
-		Select s1 = new Select(driver.findElement(By.id("form_title")));
-		s1.selectByVisibleText("Ms.");
-		
-		driver.findElement(By.name("form_fname")).sendKeys("Abc2");
-		driver.findElement(By.name("form_lname")).sendKeys("Def2");
-		driver.findElement(By.id("form_DOB")).sendKeys("2021-08-12");
-		
-		WebDriverWait wait = new WebDriverWait(driver,50);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//button[@class=\"xdsoft_today_button\"]"))));
-		Actions a1 = new Actions(driver);
-		a1.moveToElement(driver.findElement(By.xpath("//button[@class=\"xdsoft_today_button\"]"))).doubleClick().perform();
-		
-		Thread.sleep(2000);
-		Select s2=new Select(driver.findElement(By.id("form_sex")));
-		s2.selectByVisibleText("Female");
-		
-		driver.findElement(By.id("create")).click();
-		
-		driver.switchTo().defaultContent();
-		
-		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='modalframe']")));
-		driver.findElement(By.xpath("//input[@value=\"Confirm Create New Patient\"]")).click();
-		
-		wait.until(ExpectedConditions.alertIsPresent());
-		System.out.println(driver.switchTo().alert().getText());
-		driver.switchTo().alert().accept();
-		Thread.sleep(2000);
-		
-		driver.findElement(By.xpath("//div[@class=\"closeDlgIframe\"]")).click();
 
 	}
 

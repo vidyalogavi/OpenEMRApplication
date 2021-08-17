@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.sg.base.WebDriverWrapper;
 import com.sg.pages.DashboardPages;
 import com.sg.pages.LoginPage;
@@ -19,14 +20,17 @@ public class LoginTest extends WebDriverWrapper
 		LoginPage login = new LoginPage(driver);
 		
 		login.enterUsername(username);
+		test.log(Status.INFO, "Entered username as "+username);
 		login.enterPassword(password);
-		
+		test.log(Status.INFO, "Entered passowrd as "+password);
 		login.selectLanguage(language);
-		
+		test.log(Status.INFO, "Selected language as "+language);
 		login.clickLogin();
+		test.log(Status.INFO, "Clicked on Login");
 		
 		DashboardPages dashboard = new DashboardPages(driver);
 		dashboard.waitForPresenceOfFlowBoard();
+		test.log(Status.INFO, "Waited for presence of Flow Board");
 		
 		Assert.assertEquals(dashboard.getPageTitle(), expTitle);
 	}
@@ -36,11 +40,14 @@ public class LoginTest extends WebDriverWrapper
 	{
 		LoginPage login = new LoginPage(driver);
 		login.enterUsername(username);
+		test.log(Status.INFO, "Entered username as "+username);
 		login.enterPassword(password);
-		
+		test.log(Status.INFO, "Entered passowrd as "+password);
 		login.selectLanguage(language);
-		
+		test.log(Status.INFO, "Selected language as "+language);
 		login.clickLogin();
+		test.log(Status.INFO, "Clicked on Login");
+		
 		Assert.assertEquals(login.getInvalidLoginMessage(),expError);
 
 	}

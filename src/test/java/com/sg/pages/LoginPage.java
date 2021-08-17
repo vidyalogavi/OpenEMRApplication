@@ -19,6 +19,7 @@ public class LoginPage {
 	private By ackLiecenceAndCertTestLocator = By.linkText("Acknowledgments, Licensing and Certification");
 	private By descriptionLocator=By.xpath("//p[contains(text(),'The most')]");
 	private By errorMessageLocator = By.xpath("//div[contains(text(),'Invalid')]");
+	private By noThanksBtnLocator = By.xpath("//button[text()='No Thanks']");
 	
 	public void enterUsername(String username)
 	{
@@ -56,5 +57,7 @@ public class LoginPage {
 		return driver.findElement(errorMessageLocator).getText();
 
 	}
+	
+
 
 }

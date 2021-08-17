@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.sg.test.AboutTest">
+      <class name="com.sg.test.PatientTest">
         <methods>
-          <include name="checkAboutHeaderAndVersionTest" invocation-numbers="0"/>
+          <include name="addPatientTest" invocation-numbers="2 3"/>
+          <include name="end"/>
           <include name="tearDown"/>
+          <include name="start"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- com.sg.test.AboutTest -->
+      </class> <!-- com.sg.test.PatientTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
